@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<%- include('Components/Header') %>
+
+    <body>
+        <%- include('Components/Navbar', { user }) %>
+            <div class="jumbotron">
+                <div class="col-sm-8 mx-auto">
+                    <div class="container">
+                        <div class="col-2"><img style="float:left;padding-right:10px;" class="img-responsive rounded-circle bounce" src='https://cdn.discordapp.com/avatars/634908645896880128/8b07933aa38d65760745017dadd4e520.png?size=128'>
+                        </div>
+                        <div class="col-8">
+                            <h1>Unicron Bot</h1>
+                            <p>A Powerful multi-purpose Discord Bot with over than 100+ commands comes with many features!</p>
+                        </div>
+                        <a class="btn btn-primary btn-lg rounded shadow-lg" href="https://discord.com/oauth2/authorize?client_id=634908645896880128&scope=bot&permissions=285599830" role="button">Invite</a>
+                        <a class="btn btn-primary btn-lg rounded shadow-lg" href="https://discord.gg/Pp9T2zS" role="button">Support Server</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-8 mx-auto">
+                <div class="container">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Customizable</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <%- include('Components/Footer') %>
+    </body>
+
+</html>

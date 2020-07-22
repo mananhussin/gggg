@@ -1,0 +1,39 @@
+<div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Unicron Dashboard</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse align-content-md-around" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link border-0" href="_https://discord.gg/Pp9T2zS">Support Server</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link border-0" href="https://unicron.gitbook.io/docs/">Documentation</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link border-0" href="https://unicron.gitbook.io/guide/">Guide</a>
+                </li>
+            </ul>
+        </div>
+        <% if (user) { %>
+        <span class="nav-item dropdown dropdown-menu-right">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <%- user.tag %>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/guilds">My Servers</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="/logout">Logout</a>
+            </div>
+        </span>
+        <% } else { %>
+        <span class="nav-item">
+            <a class="btn btn-primary rounded shadow-lg" href="/login">Login</a>
+        </span>
+        <% } %>
+    </nav>
+</div>
