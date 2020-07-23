@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<%- include('Components/Header', { title: '404 Not Found' }) %>
+
+<body style="background-color: #36393f;">
+
+    <%- include('Components/Navbar', { user }) %>
+
+    <img class="center rounded mx-auto d-block img-fluid border-warning" alt="404" style="text-align:center;"
+        width="500px" height="500px" src='https://online.globalresp.com/MyAccount/Images/404.jpg' />
+
+    <div style="text-align: center;">
+        <a class="btn btn-primary" href="/">Go back to Homepage</a>
+    </div>
+
+
+    <%- include('Components/Footer') %>
+</body>
+
+</html>

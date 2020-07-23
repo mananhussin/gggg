@@ -1,39 +1,65 @@
 <div>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Unicron Dashboard</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar navbar-expand-lg border-light" style="background-color: #202225;">
+        <a class="navbar-brand text-white" href="/">
+            <img class="rounded-circle"
+                src='https://cdn.discordapp.com/avatars/634908645896880128/8b07933aa38d65760745017dadd4e520.png?size=32' />
+            Unicron Dashboard
+        </a>
+        <button class="navbar-toggler rounded" style="background-color:#2f3136;" type="button"
+            data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse align-content-md-around" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
+                <% if (user) { %>
+                <li class="nav-item text-light border-0">
+                    <a class="nav-link" href="/dashboard">My Servers</a>
+                </li>
+                <% } %>
                 <li class="nav-item">
-                    <a class="nav-link border-0" href="_https://discord.gg/Pp9T2zS">Support Server</a>
+                    <a class="nav-link text-light border-0" href="/docs">Documentation</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link border-0" href="https://unicron.gitbook.io/docs/">Documentation</a>
+                    <a class="nav-link text-light border-0" href="/guide">Guide</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link border-0" href="https://unicron.gitbook.io/guide/">Guide</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle rounded text-light" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        More
+                    </a>
+                    <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item text-light" target="_blank" href="https://discord.gg/Pp9T2zS">Support
+                            Server</a>
+                        <a class="dropdown-item text-light" target="_blank"
+                            href="https://discord.com/oauth2/authorize?client_id=634908645896880128&scope=bot&permissions=285599830">Add
+                            to Discord</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item text-light" target="_blank"
+                            href="https://github.com/oadpoaw/unicron-bot">Github
+                            Repository</a>
+                    </div>
                 </li>
             </ul>
         </div>
         <% if (user) { %>
         <span class="nav-item dropdown dropdown-menu-right">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                <%- user.tag %>
+            <a class="btn btn-outline-secondary dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <% if (user.avatar) {  %>
+                <img class="rounded-circle"
+                    src="<%= `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=32` %>" />
+                <% } %> <%- user.username %>#<%- user.discriminator %>
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="/guilds">My Servers</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="/logout">Logout</a>
+            <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item text-light" href="/logout">Logout</a>
             </div>
         </span>
         <% } else { %>
-        <span class="nav-item">
-            <a class="btn btn-primary rounded shadow-lg" href="/login">Login</a>
+        <span class="nav-item" , style="max-width: 8rem;;">
+            <a class="btn btn-outline-light rounded" href="/login">Login</a>
         </span>
         <% } %>
     </nav>
+    <p>&nbsp;</p>
 </div>

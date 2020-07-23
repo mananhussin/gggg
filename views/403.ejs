@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<%- include('Components/Header', { title: '403 Forbidden' }) %>
+
+<body style="background-color: #36393f;">
+
+    <%- include('Components/Navbar', { user }) %>
+
+    <img class="center rounded mx-auto d-block img-fluid border-warning" alt="403" style="text-align:center;"
+        width="500px" height="500px"
+        src='https://freefrontend.com/assets/img/403-forbidden-html-templates/403-Forbidden-HTML.png' />
+
+    <div style="text-align: center;">
+        <a class="btn btn-primary" href="/">Go back to Homepage</a>
+    </div>
+
+
+    <%- include('Components/Footer') %>
+</body>
+
+</html>
