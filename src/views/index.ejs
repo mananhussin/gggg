@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('Components/Header', { title: 'Unicron - Discord Bot'}) %>
+
+<body>
+    <%- include('Components/Navbar')%>
+    <div class="jumbotron" style="clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%, 0 0);">
+        <img class="center rounded-circle mx-auto d-block img-fluid"
+            style="text-align:center;max-width: 148px;max-height:148px" src='/public/img/logo.jpg'>
+        <h1 class="text-center">Unicron</h1>
+        <p class="text-center">
+            A Powerful multi-purpose Discord Bot with over than 100+ commands that comes with many features!
+        </p>
+        <div style="text-align:center">
+            <a class="btn btn-primary text-light rounded-pill" href="/invite" target="_blank">
+                Add to Discord
+            </a>
+            <% if (user) { %>
+            <a class="btn btn-primary text-light rounded-pill" href="/dashboard">
+                Manage Servers
+            </a>
+            <% } else { %>
+            <a class="btn btn-primary text-light rounded-pill" href="/oauth/login">
+                <img class="rounded" style="max-width: 1rem; max-height: 1rem;"
+                    src='https://discord.com/assets/28174a34e77bb5e5310ced9f95cb480b.png'> Login
+            </a>
+            <% } %>
+        </div>
+    </div>
+    <div class="container mt-3 align-items-center justify-content-around">
+        <div class="card bind-theme rounded" style="max-width: 26rem;">
+            <div class="card-body bind-theme-accent rounded">
+                <h4 class="card-title text-center">🎟️ Ticket System</h4>
+                <p class="card-text bind-theme bind-theme-accent">
+                    Our wonderful very simple Ticket System bringing/helping support from your members as your
+                    community continue to grows
+                </p>
+            </div>
+        </div>
+        <div class="card bind-theme rounded" style="max-width: 26rem;">
+            <div class="card-body bind-theme-accent rounded">
+                <h4 class="card-title text-center">⚙️ Customizable</h4>
+                <p class="card-text bind-theme bind-theme-accent">
+                    With Unicron dashboard everything is easy to setup!<br>
+                    Configure what works best for you!
+                </p>
+            </div>
+        </div>
+        <div class="card bind-theme rounded" style="max-width: 26rem;">
+            <div class="card-body bind-theme-accent rounded">
+                <h4 class="card-title text-center">⚒️ Moderation</h4>
+                <p class="card-text bind-theme bind-theme-accent">
+                    Always growing simple yet powerful moderation utilities. Putting you back in control of your
+                    community.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="container pb-3 align-items-center justify-content-around">
+        <div class="card bind-theme rounded" style="max-width: 26rem;">
+            <div class="card-body bind-theme-accent rounded">
+                <h4 class="card-title text-center">💸 Economy</h4>
+                <p class="card-text bind-theme bind-theme-accent">
+                    With our awesome Economy system, you can now engage members to your community as it continues to
+                    grow!
+                    GLOBAL ECONOMY SYSTEM
+                </p>
+            </div>
+        </div>
+        <div class="card bind-theme rounded" style="max-width: 26rem;">
+            <div class="card-body bind-theme-accent rounded">
+                <h4 class="card-title text-center">🎙️ Dynamic Text/Voice</h4>
+                <p class="card-text bind-theme bind-theme-accent">
+                    Which allows users to create their own temporary text/voice Channels to enhance your community
+                    environment as your users continue to meet new people.
+                </p>
+            </div>
+        </div>
+    </div>
+    <%- include('Components/Footer') %>
+</body>
+
+</html>
