@@ -24,6 +24,7 @@
   "homepage": "https://github.com/oadpoaw/unicron-dashboard#readme",
   "dependencies": {
     "chalk": "^4.1.0",
+    "cors": "^2.8.5",
     "discord.js": "^12.2.0",
     "dotenv": "^8.2.0",
     "ejs": "^3.1.3",
@@ -40,6 +41,7 @@
     "passport": "^0.4.1",
     "passport-discord": "^0.1.4",
     "sequelize": "^6.3.3",
+    "socket.io-client": "^2.3.0",
     "sqlite3": "^5.0.0"
   }
 }

@@ -4,5 +4,6 @@ class Event extends Component {
         super(app, 'event');
         this.eventName = eventName;
     }
+    async emit() {}
 }
 module.exports = Event;

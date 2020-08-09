@@ -26,9 +26,6 @@ class OAuth extends Route {
     createRoute() {
         this.app.app.use(passport.initialize());
         this.app.app.use(passport.session());
-        this.route.get('/', (req, res) => {
-            this.client.renderTemplate(req, res, 'OAuth.ejs');
-        });
         this.route.get('/login', (req, res, next) => {
             next();
         }, passport.authenticate('discord', { failureRedirect: '/500' }));
