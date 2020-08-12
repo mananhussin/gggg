@@ -13,7 +13,8 @@
             <div class="col-5">
                 <h6>Links</h6>
                 <ul class="footer-links text-primary">
-                    <li><a href="https://discord.gg/RgmjBqY" target="_blank">&CenterDot; Official Discord Server</a></li>
+                    <li><a href="/discord" target="_blank">&CenterDot; Official Discord Server</a>
+                    </li>
                     <li><a href="/privacy-policy">&CenterDot; Privacy Policy</a></li>
                     <li><a href="/terms-of-service">&CenterDot; Terms of Service</a></li>
                 </ul>
@@ -22,36 +23,7 @@
     </div>
     <div class="container">
         <div class="float-left ml-5">
-            Copyright &copy; 2020 <a href="/" class="text-primary">Unicron LLC</a>. All rights reserved. <br />
-            <div class="form-group" style="margin-bottom: 0;" href="#">
-                <div class="custom-control custom-switch bmd-switch-track">
-                    <input type="checkbox" class="custom-control-input" id="theme-switch">
-                    <label class="custom-control-label" for="theme-switch">
-                        <p class="font-weight-normal">Dark Theme</p>
-                    </label>
-                </div>
-            </div>
+            Copyright &copy; 2020 <a href="#" class="text-primary">Unicron Ltd</a>. All rights reserved. <br />
         </div>
     </div>
 </footer>
-<script>
-    const themeSwitch = document.getElementById('theme-switch');
-    const usingDark = localStorage.getItem('dark-theme');
-    if (usingDark === 'true') {
-        document.body.classList.add('theme-dark')
-        themeSwitch.checked = 'true';
-    } else {
-        document.body.classList.add('theme-light');
-    }
-    themeSwitch.onclick = () => {
-        if (document.body.classList.contains('theme-dark')) {
-            document.body.classList.replace('theme-dark', 'theme-light');
-            localStorage.setItem('dark-theme', false);
-            console.log('Switching theme to Light');
-        } else if (document.body.classList.contains('theme-light')) {
-            document.body.classList.replace('theme-light', 'theme-dark');
-            localStorage.setItem('dark-theme', true);
-            console.log('Switching theme to Dark');
-        }
-    }
-</script>

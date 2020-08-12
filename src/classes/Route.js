@@ -6,5 +6,8 @@ class Route extends Component {
         this.path = path;
         this.route = Router();
     }
+    createRoute() {
+        return this.route;
+    }
 }
 module.exports = Route;

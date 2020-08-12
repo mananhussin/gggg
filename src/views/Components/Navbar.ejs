@@ -1,21 +1,46 @@
-<nav class="main-header navbar navbar-expand bind-navbar font-weight-bolder" style="margin-left: 0px;border-bottom-width: 0px;">
-    <a class="navbar-brand">
+<nav class="navbar navbar-expand-lg bg-primary">
+    <a class="navbar-brand" href="/">
         <img class="rounded-circle" style="margin-left: 1rem;max-height: 2.65rem;max-width: 2.65rem;"
             src='/public/img/logo.jpg' />
-        <img class="rounded" style="max-height: 4rem;max-width: 9rem;"
-            src="/public/img/text-logo.png" />
+        <img class="rounded" style="max-height: 4rem;max-width: 9rem;" src="/public/img/text-logo.png" />
     </a>
-    <ul class="navbar-nav float-right">
-        <li class="nav-item d-none d-sm-inline-block">
-            <a href="/" class="nav-link">Home</a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-            <a href="/dashboard" class="nav-link">Dashboard</a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-            <a href="/commands" class="nav-link">Commands</a>
-        </li>
-    </ul>
-    <ul class="navbar-nav ml-auto" style="margin-left: 0;">
-    </ul>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <div class="h-line rounded"></div>
+        <div class="h-line rounded"></div>
+        <div class="h-line rounded"></div>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" style="z-index: 1000;">
+        <ul class="navbar-nav mr-auto overflow-auto">
+            <li class="nav-item m-1">
+                <a class="nav-link" href="/dashboard">Dashboard</a>
+            </li>
+            <li class="nav-item m-1">
+                <a class="nav-link" href="/commands">Commands</a>
+            </li>
+            <li class="nav-item m-1">
+                <a class="nav-link" href="/voting">Vote</a>
+            </li>
+        </ul>
+        <% if (user) { %>
+        <div class="nav-item dropdown ml-auto font-weight-bold">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <img class="rounded-circle" style="max-width: 2rem;max-height: 2rem;" src="<%= user.avatarURL %>" />
+            </a>
+            <div class="dropdown-menu dropdown-menu-lg-right rounded bg-black" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item text-white" href="/profile"><img class="rounded-circle"
+                        style="max-width: 2rem;max-height: 2rem;" src="<%= user.avatarURL %>" />
+                    <%- user.tag %></a>
+                <a class="dropdown-item text-white" href="/dashboard">Manage Servers</a>
+                <a class="dropdown-item text-white" href="/oauth/logout">Logout</a>
+            </div>
+        </div>
+        <% } else { %>
+        <div class="ml-auto">
+            <a href="/oauth/login" class="btn btn-dark"><img class="rounded" style="max-width: 1.3rem; height: 1.3rem;"
+                    src='/public/img/discord_logo.svg'> Login</a>
+        </div>
+        <% } %>
+    </div>
 </nav>

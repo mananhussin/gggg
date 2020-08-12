@@ -2,11 +2,11 @@ const Route = require('../classes/Route');
 
 class Discord extends Route {
     constructor(app) {
-        super(app, '/invite');
+        super(app, '/discord');
     }
     createRoute() {
         this.route.get('/', (req, res) => {
-            res.redirect(`https://discord.com/oauth2/authorize?client_id=${process.env.MODE !== 'DEV' ? process.env.CLIENT_ID : process.env.DEV_CLIENT_ID}&scope=bot&permissions=285599830`);
+            res.redirect('https://discord.gg/RgmjBqY');
         });
         return this.route;
     }

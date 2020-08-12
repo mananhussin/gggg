@@ -24,7 +24,7 @@
     --dark-accent: rgb(32, 35, 37);
     --black: #000000;
     --navbar-size: 60px;
-    --border-radius: 20px;
+    --border-radius: 15px;
     --speed: 400ms;
     --navbar-color: var(--blue);
     --navbar-text: var(--light);
@@ -103,8 +103,17 @@ a {
 }
 a:hover {
     color: currentColor;
-    filter: brightness(1.5);
-    cursor: pointer;
+    filter: brightness(1.2);
+}
+
+.dropdown-menu a {
+    margin: 5px;
+    justify-content: center;
+    transition: all 300ms ease-in-out;
+}
+
+.dropdown-menu a:hover {
+    background-color: transparent;
 }
 
 .shadow {
@@ -118,6 +127,7 @@ a:hover {
     color: var(--text-color);
     padding-bottom: 3.5em;
     text-align: center;
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 100%, 0 80%, 0 0);
 }
 
 .card:hover {
@@ -324,7 +334,12 @@ a:hover {
     .container {
         flex-direction: column;
     }
-    .card:hover {
-        margin-bottom: 10px;
-    }
+}
+
+.h-line {
+    width: 30px;
+    height: 3px;
+    background: var(--white);
+    margin: 5px;
+    z-index: 20000;
 }

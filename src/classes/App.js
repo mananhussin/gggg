@@ -8,7 +8,9 @@ const MemoryStore = require('memorystore')(session);
 const EventEmitter = require('events').EventEmitter;
 const Logger = require('../utils/Logger');
 
+const User = require('./DiscordUser')
 const Database = require('../api/Database');
+const Wrapper = require('../utils/Wrapper');
 const BaseRoute = require('./Route');
 const BaseEvent = require('./WebEvent');
 const WebSocketEvent = require('./WebSocketEvent');
@@ -18,19 +20,22 @@ const UserManager = require('../managers/UserManager');
 const GuildManager = require('../managers/GuildManager');
 const MemberManager = require('../managers/MemberManager');
 
+const Collection = require('discord.js').Collection;
+
 class App extends EventEmitter {
     constructor() {
         super();
         this.logger = Logger;
         this.ws = new Database();
         this.app = express();
+        this.mode = process.env.MODE;
         this.app.use(cors());
         this.app.use(helmet());
         this.app.use(express.json());
         this.app.use(express.urlencoded({ extended: true }));
         this.app.use(session({
             store: new MemoryStore({ checkPeriod: 86400000 }),
-            secret: process.env.SESSION_SECRET,
+            secret: this.mode !== 'DEV' ? process.env.CLIENT_SECRET : process.env.DEV_CLIENT_SECRET,
             resave: false,
             saveUninitialized: false,
         }));
@@ -44,6 +49,21 @@ class App extends EventEmitter {
             guilds: new GuildManager(this),
             members: new MemberManager(this),
         }
+        /**
+         * @type {Collection<string, User>}
+         */
+        this.users = new Collection();
+        this.api = new Wrapper(this);
+    }
+    /**
+     * 
+     * @param {express.Request} req 
+     * @param {express.response} res 
+     * @param {function()} next 
+     */
+    isAuthenticated(req, res, next) {
+        if (req.isAuthenticated()) return next();
+        res.redirect('/oauth/login');
     }
     /**
      * 
@@ -51,13 +71,13 @@ class App extends EventEmitter {
      * @param {express.request} req 
      * @param {express.response} res 
      * @param {{}} options
+     * @param {number} [status=200]
      */
-    renderTemplate(template, req, res, options = {}) {
-        const base = {
+    renderTemplate(template, req, res, options = {}, status = 200) {
+        res.status(status).render(template, Object.assign({
             path: req.path,
             user: req.isAuthenticated() ? req.user : null,
-        };
-        res.render(template, Object.assign(base, options));
+        }, options));
     }
     async register() {
         await this.registerRoutes();
@@ -78,10 +98,15 @@ class App extends EventEmitter {
                     const instance = new Route(this);
                     this.app.use(instance.path, instance.createRoute());
                     this.logger.info(`${instance.path}`);
+                    delete require.cache[require.resolve(path.join(filePath, file))];
                 }
             }
             this.app.get('/', (req, res) => {
+                if (req.query && req.query.q && req.query.q === '500') return this.renderTemplate('500.ejs', req, res, {}, 500);
                 this.renderTemplate('index.ejs', req, res);
+            });
+            this.app.use((req, res) => {
+                this.renderTemplate('404.ejs', req, res, {}, 404);
             });
         } catch (e) {
             this.logger.error(e);
@@ -93,7 +118,7 @@ class App extends EventEmitter {
      */
     async registerWebSocketEvents() {
         try {
-            const filePath = path.join(__dirname, '..', 'events','websocket');
+            const filePath = path.join(__dirname, '..', 'events', 'websocket');
             const files = await fs.readdir(filePath);
             for (const file of files) {
                 if (!file.endsWith('.js')) continue;
@@ -114,7 +139,7 @@ class App extends EventEmitter {
      */
     async registerWebEvents() {
         try {
-            const filePath = path.join(__dirname, '..', 'events','web');
+            const filePath = path.join(__dirname, '..', 'events', 'web');
             const files = await fs.readdir(filePath);
             for (const file of files) {
                 if (!file.endsWith('.js')) continue;
@@ -134,12 +159,24 @@ class App extends EventEmitter {
      * 
      * @param {function()} fn 
      */
-    listen(fn) {
+    async listen(fn) {
         this.ws.connect();
-        this.app.listen(80, () => {
-            this.emit('ready');
-            fn();
-        });
+        if (this.mode === 'DEV') {
+            const cert = await fs.readFile('localhost.cert');
+            const key = await fs.readFile('localhost.key');
+            require('https').createServer({
+                cert: cert,
+                key: key,
+            }, this.app).listen(443, () => {
+                this.emit('ready');
+                fn();
+            });
+        } else {
+            this.app.listen(80, () => {
+                this.emit('ready');
+                fn();
+            });
+        }
     }
 }
 

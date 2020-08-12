@@ -1,6 +1,5 @@
 const chalk = require('chalk');
 const moment = require('moment');
-const path = require('path');
 
 function timestamp(thread, type) {
     return `[${moment().format('YYYY-MM-DD HH:mm:ss')}] [${thread} Thread/${type}]`;

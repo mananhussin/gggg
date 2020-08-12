@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('Components/Header', { title: '404 - Page Not Found'}) %>
+
+<body class="theme-dark">
+    <%- include('Components/Navbar', { user })%>
+    <div class="jumbotron">
+        <img class="center rounded-circle mx-auto d-block img-fluid"
+            style="text-align:center;max-width: 148px;height:148px" src='/public/img/logo.jpg'>
+        <h1 class="text-center">500 - Internal Server Error</h1>
+        <p class="text-center">
+            Oh, oh... something happened to our end, please try again later.
+        </p>
+        <div style="text-align:center">
+            <a class="btn btn-primary rounded" href="/">
+                Go Back to Home page
+            </a>
+        </div>
+    </div>
+    <br><br><br><br>
+    <%- include('Components/Footer') %>
+</body>
+
+</html>
