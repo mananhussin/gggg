@@ -16,10 +16,10 @@
                 <a class="nav-link" href="/dashboard">Dashboard</a>
             </li>
             <li class="nav-item m-1">
-                <a class="nav-link" href="/commands">Commands</a>
+                <a class="nav-link" href="https://docs.unicron-bot.xyz">Documentation</a>
             </li>
             <li class="nav-item m-1">
-                <a class="nav-link" href="/voting">Vote</a>
+                <a class="nav-link" href="/voting">Voting</a>
             </li>
         </ul>
         <% if (user) { %>
@@ -29,7 +29,7 @@
                 <img class="rounded-circle" style="max-width: 2rem;max-height: 2rem;" src="<%= user.avatarURL %>" />
             </a>
             <div class="dropdown-menu dropdown-menu-lg-right rounded bg-black" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item text-white" href="/profile"><img class="rounded-circle"
+                <a class="dropdown-item text-white" href="#"><img class="rounded-circle"
                         style="max-width: 2rem;max-height: 2rem;" src="<%= user.avatarURL %>" />
                     <%- user.tag %></a>
                 <a class="dropdown-item text-white" href="/dashboard">Manage Servers</a>
@@ -38,7 +38,7 @@
         </div>
         <% } else { %>
         <div class="ml-auto">
-            <a href="/oauth/login" class="btn btn-dark"><img class="rounded" style="max-width: 1.3rem; height: 1.3rem;"
+            <a href="/oauth/login" class="btn waves-effect light-blue white-text"><img class="rounded" style="max-width: 1.3rem; height: 1.3rem;"
                     src='/public/img/discord_logo.svg'> Login</a>
         </div>
         <% } %>

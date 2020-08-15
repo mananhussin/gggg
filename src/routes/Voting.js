@@ -2,7 +2,7 @@ const Route = require('../classes/Route');
 
 class Commands extends Route {
     constructor(app) {
-        super(app, '/commands');
+        super(app, '/voting');
     }
     createRoute() {
         this.route.get('/', (req, res) => {

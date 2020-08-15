@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<%- include('Components/Header', { title: `${user.username}'s Profile` }) %>
+
+<body class="theme-dark">
+    <%- include('Components/Navbar', { user }) %>
+    <div class="jumbotron">
+        <img class="center rounded-circle mx-auto d-block" style="text-align:center;max-width: 148px;height:148px"
+            src='<%= user.avatarURL %>'>
+        <h1 class="text-center"><%- user.tag %></h1>
+    </div>
+
+    <div class="container">
+        <table class="table table-dark rounded m-3 mx-auto" style="max-width: 20rem;">
+            <thead>
+                <tr>
+                    <th scope="col" class="border-0">Leveling</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Level</th>
+                    <td><%- data.level %> &LongRightArrow; <%- data.nextlevel %> </td>
+                </tr>
+                <tr>
+                    <th scope="row">Experiene</th>
+                    <td><%- data.experience %> ✨</td>
+                </tr>
+                <tr>
+                    <th scope="row">Progress</th>
+                    <td>
+                        <div class="progress mx-auto">
+                            <div class="progress-bar" role="progressbar" style="width: <%= data.progress %>;"
+                                aria-valuenow="<%= data.progress %>" aria-valuemin="0" aria-valuemax="100">
+                            </div>
+                        </div> <br><%- data.progressXP %> - XP Remaining
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-dark rounded m-3 mx-auto" style="max-width: 20rem;">
+            <thead>
+                <tr>
+                    <th scope="col" class="border-0">Economy Stats</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Coins</th>
+                    <td><%- data.balance %> 💰</td>
+                </tr>
+                <tr>
+                    <th scope="row">Inventory</th>
+                    <td><%- data.inventory.length %> item(s)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <%- include('Components/Footer') %>
+</body>
+
+</html>

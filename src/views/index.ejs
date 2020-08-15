@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('Components/Header', { title: 'Unicron - Discord Bot'}) %>
+<%- include('Components/Header', { title: 'Unicron - Discord Bot' }) %>
 
 <body class="theme-dark">
     <%- include('Components/Navbar', { user })%>
     <div class="jumbotron">
-        <img class="center rounded-circle mx-auto d-block img-fluid"
+        <img class="center rounded-circle mx-auto d-block"
             style="text-align:center;max-width: 148px;height:148px" src='/public/img/logo.jpg'>
         <h1 class="text-center">Unicron</h1>
         <p class="text-center">
             A Powerful multi-purpose Discord Bot with over than 100+ commands that comes with many features!
         </p>
         <div style="text-align:center">
-            <a class="btn btn-primary rounded" href="/invite" target="_blank">
+            <a class="btn blue white-text rounded waves-effect" href="/invite" target="_blank">
                 Add to Discord
             </a>
             <% if (!user) { %>
-            <a class="btn btn-primary rounded" href="/oauth/login">
+            <a class="btn blue white-text rounded waves-effect" href="/oauth/login">
                 <img class="rounded" style="max-width: 1.5rem; height: 1.5rem;" src='/public/img/discord_logo.svg'>
                 Login
             </a>
             <% } %>
         </div>
     </div>
-    <div class="container mt-3 align-items-center justify-content-around">
-        <div class="card bind-theme rounded m-2" style="max-width: 26rem;height: 12rem;">
-            <div class="card-body bind-theme-accent rounded">
+    <div class="row mt-3 align-items-center justify-content-around center">
+        <div class="card bind-theme rounded home-card">
+            <div class="card-body bind-theme-accent rounded pt-1">
                 <h4 class="card-title text-center">🎟️ Ticket System</h4>
                 <p class="card-text bind-theme bind-theme-accent">
                     Our wonderful very simple Ticket System bringing/helping support from your members as your
@@ -33,17 +33,17 @@
                 </p>
             </div>
         </div>
-        <div class="card bind-theme rounded m-2" style="max-width: 26rem;height: 12rem;">
-            <div class="card-body bind-theme-accent rounded">
+        <div class="card bind-theme rounded home-card">
+            <div class="card-body bind-theme-accent rounded pt-1">
                 <h4 class="card-title text-center">⚙️ Customizable</h4>
                 <p class="card-text bind-theme bind-theme-accent">
-                    With Unicron dashboard everything is easy to setup!<br>
+                    With our powerful dashboard everything is easy to setup!<br>
                     Configure what works best for you!
                 </p>
             </div>
         </div>
-        <div class="card bind-theme rounded m-2" style="max-width: 26rem;height: 12rem;">
-            <div class="card-body bind-theme-accent rounded">
+        <div class="card bind-theme rounded home-card">
+            <div class="card-body bind-theme-accent rounded pt-1">
                 <h4 class="card-title text-center">⚒️ Moderation</h4>
                 <p class="card-text bind-theme bind-theme-accent">
                     Always growing simple yet powerful moderation utilities. Putting you back in control of your
@@ -51,10 +51,8 @@
                 </p>
             </div>
         </div>
-    </div>
-    <div class="container pb-3 align-items-center justify-content-around">
-        <div class="card bind-theme rounded m-2" style="max-width: 26rem;height: 12rem;">
-            <div class="card-body bind-theme-accent rounded">
+        <div class="card bind-theme rounded home-card">
+            <div class="card-body bind-theme-accent rounded pt-1">
                 <h4 class="card-title text-center">💸 Economy</h4>
                 <p class="card-text bind-theme bind-theme-accent">
                     With our awesome Economy system, you can now engage members to your community as it continues to
@@ -63,8 +61,8 @@
                 </p>
             </div>
         </div>
-        <div class="card bind-theme rounded m-2" style="max-width: 26rem;height: 12rem;">
-            <div class="card-body bind-theme-accent rounded">
+        <div class="card bind-theme rounded home-card">
+            <div class="card-body bind-theme-accent rounded pt-1">
                 <h4 class="card-title text-center">🎙️ Dynamic Text/Voice</h4>
                 <p class="card-text bind-theme bind-theme-accent">
                     Which allows users to create their own temporary text/voice Channels to enhance your community

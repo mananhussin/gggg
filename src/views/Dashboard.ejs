@@ -1,18 +1,27 @@
 <!DOCTYPE html>
 <html>
 <%- include('Components/Header', { title: 'Dashboard - Servers' }) %>
+
 <body class="theme-dark">
     <%- include('Components/Navbar', { user }) %>
     <br>
-    <h1 class="text-center text-light">Select a server!</h1>
+    <h3 class="text-center text-light">Select a server!</h3>
     <p class="border-0 rounded text-center text-light">
         Not seeing your server? Make sure you have invited the bot to your server!
     </p>
-    <div class="container justify-content-center">
+    <div class="row">
         <% guilds.forEach((guild) => { %>
-        <%- include('Components/Guild', { guild }) %>
+        <div class="col mt-3">
+            <div class="justify-content-center align-items-center d-flex">
+                <a href="/dashboard/manage/<%= guild.id%>" class="waves-effect">
+                    <img class="card-img-top rounded justify-content-center"
+                        src="<%= `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}?`%>"
+                        style="width:128px;height:128px;" alt="<%- guild.name %>">
+                </a>
+            </div>
+        </div>
         <% }) %>
-    </div>
+    </div> <br><br><br><br><br><br>
     <%- include('Components/Footer') %>
 </body>
 

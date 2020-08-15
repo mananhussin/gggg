@@ -6,26 +6,25 @@ const express = require('express');
 const session = require('express-session');
 const MemoryStore = require('memorystore')(session);
 const EventEmitter = require('events').EventEmitter;
-const Logger = require('../utils/Logger');
 
-const User = require('./DiscordUser')
+const Bot = require('../api/Bot');
 const Database = require('../api/Database');
-const Wrapper = require('../utils/Wrapper');
 const BaseRoute = require('./Route');
 const BaseEvent = require('./WebEvent');
 const WebSocketEvent = require('./WebSocketEvent');
 
-const TagManager = require('../managers/TagManager');
 const UserManager = require('../managers/UserManager');
 const GuildManager = require('../managers/GuildManager');
-const MemberManager = require('../managers/MemberManager');
 
-const Collection = require('discord.js').Collection;
+const AES = require('../utils/AES');
+const Logger = require('../utils/Logger');
+const LocalDB = require('../database/');
 
 class App extends EventEmitter {
     constructor() {
         super();
         this.logger = Logger;
+        this.bot = new Bot();
         this.ws = new Database();
         this.app = express();
         this.mode = process.env.MODE;
@@ -44,16 +43,11 @@ class App extends EventEmitter {
         this.app.set('view engine', 'html');
         this.app.set('views', path.join(__dirname, '..', 'views'));
         this.db = {
-            tags: new TagManager(this),
             users: new UserManager(this),
             guilds: new GuildManager(this),
-            members: new MemberManager(this),
         }
-        /**
-         * @type {Collection<string, User>}
-         */
-        this.users = new Collection();
-        this.api = new Wrapper(this);
+        this.aes = new AES(process.env.AES_KEY);
+        this.localdb = new LocalDB(this);
     }
     /**
      * 
@@ -74,7 +68,7 @@ class App extends EventEmitter {
      * @param {number} [status=200]
      */
     renderTemplate(template, req, res, options = {}, status = 200) {
-        res.status(status).render(template, Object.assign({
+        return res.status(status).render(template, Object.assign({
             path: req.path,
             user: req.isAuthenticated() ? req.user : null,
         }, options));
@@ -102,7 +96,6 @@ class App extends EventEmitter {
                 }
             }
             this.app.get('/', (req, res) => {
-                if (req.query && req.query.q && req.query.q === '500') return this.renderTemplate('500.ejs', req, res, {}, 500);
                 this.renderTemplate('index.ejs', req, res);
             });
             this.app.use((req, res) => {
@@ -172,7 +165,7 @@ class App extends EventEmitter {
                 fn();
             });
         } else {
-            this.app.listen(80, () => {
+            this.app.listen(443, () => {
                 this.emit('ready');
                 fn();
             });

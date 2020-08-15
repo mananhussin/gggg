@@ -36,34 +36,17 @@ class User {
          * @type {{badges: Array<string>, premium: boolean}}
          */
         this.data = raw.data;
-    }
-    get level() {
-        let lvl = 0;
-        const cur = this.experience;
+        this.level = 0;
         for (let i = 0; i < 101; i++) {
-            lvl = i;
-            if (cur >= Leveling.LevelChart[i] && cur <= Leveling.LevelChart[i + 1]) break;
+            this.lvl = i;
+            if (this.experience >= Leveling.LevelChart[i] && this.experience <= Leveling.LevelChart[i + 1]) break;
         }
-        return lvl;
-    }
-    get levelxp() {
-        return Leveling.LevelChart[this.level];
-    }
-    get nextlevel() {
-        return this.level + 1;
-    }
-    get nextlevelxp() {
-        return Leveling.LevelChart[this.nextlevel];
-    }
-    get progress() {
-        return ((this.experience - this.levelxp /
-            (this.nextlevelxp- this.levelxp))) * 100; // (xp - lxp / nxp - lxp) * 100 = n
-    }
-    get progressbar() {
-        return Leveling.ProgressBar(this.progress);
-    }
-    get progressXP() {
-        return this.nextlevelxp - this.experience;
+        this.levelxp = Leveling.LevelChart[this.level];
+        this.nextlevel = this.level + 1;
+        this.nextlevelxp = Leveling.LevelChart[this.nextlevel];
+        this.progress = ((this.experience - this.levelxp / (this.nextlevelxp- this.levelxp))) * 100;
+        this.progressbar = Leveling.ProgressBar(this.progress);
+        this.progressXP = this.nextlevelxp - this.experience;
     }
     /**
      * 
@@ -117,7 +100,7 @@ class User {
     save() {
         return new Promise(async (resolve, reject) => {
             const payload = this.toJSON();
-            await this.client.server.post(`/api/user/${payload.id}`, payload).catch(reject);
+            await this.client.ws.post(`/api/user/${payload.id}`, payload).catch(reject);
             resolve();
         });
     }

@@ -1,7 +1,7 @@
 class Guild {
     /**
      * 
-     * @param {import('./Unicron')} client 
+     * @param {import('./App')} client 
      * @param {{any}} raw 
      */
     constructor(client, raw = {}) {
@@ -129,7 +129,7 @@ class Guild {
     save() {
         return new Promise(async (resolve, reject) => {
             const payload = this.toJSON();
-            await this.client.server.post(`/api/guild/${payload.id}`, payload).catch(reject);
+            await this.client.ws.post(`/api/guild/${payload.id}`, payload).catch(reject);
             resolve();
         });
     }
@@ -147,7 +147,7 @@ class Guild {
             warnActionDuration: this.warnActionDuration,
             welcomeChannel: this.welcomeChannel,
             welcomeMessage: this.welcomeMessage,
-            welcomeEnabled: this.farewellEnabled,
+            welcomeEnabled: this.welcomeEnabled,
             farewellChannel: this.farewellChannel,
             farewellMessage: this.farewellMessage,
             farewellEnabled: this.farewellEnabled,
