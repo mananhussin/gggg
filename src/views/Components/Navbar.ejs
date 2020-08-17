@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-primary">
+<nav class="navbar navbar-expand-lg bg-primary bind-navbar">
     <a class="navbar-brand" href="/">
         <img class="rounded-circle" style="margin-left: 1rem;max-height: 2.65rem;max-width: 2.65rem;"
             src='/public/img/logo.jpg' />
@@ -11,27 +11,28 @@
         <div class="h-line rounded"></div>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent" style="z-index: 1000;">
-        <ul class="navbar-nav mr-auto overflow-auto">
+        <ul class="navbar-nav mr-auto">
             <li class="nav-item m-1">
                 <a class="nav-link" href="/dashboard">Dashboard</a>
             </li>
             <li class="nav-item m-1">
-                <a class="nav-link" href="https://docs.unicron-bot.xyz">Documentation</a>
+                <a class="nav-link" href="/commands">Commands</a>
             </li>
             <li class="nav-item m-1">
                 <a class="nav-link" href="/voting">Voting</a>
             </li>
         </ul>
         <% if (user) { %>
-        <div class="nav-item dropdown ml-auto font-weight-bold">
+        <div class="nav-item dropdown ml-auto">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                <img class="rounded-circle" style="max-width: 2rem;max-height: 2rem;" src="<%= user.avatarURL %>" />
+                <img class="rounded-circle" style="max-width: 32px;max-height: 32px;" src="<%= user.avatarURL %>" /> <%- user.tag %>
             </a>
-            <div class="dropdown-menu dropdown-menu-lg-right rounded bg-black" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item text-white" href="#"><img class="rounded-circle"
+            <div class="dropdown-menu dropdown-menu-lg-right rounded bg-black" aria-labelledby="navbarDropdown"
+                style="width: 200px;">
+                <a class="dropdown-item text-white" href="/profile"><img class="rounded-circle"
                         style="max-width: 2rem;max-height: 2rem;" src="<%= user.avatarURL %>" />
-                    <%- user.tag %></a>
+                    My Profile</a>
                 <a class="dropdown-item text-white" href="/dashboard">Manage Servers</a>
                 <a class="dropdown-item text-white" href="/oauth/logout">Logout</a>
             </div>

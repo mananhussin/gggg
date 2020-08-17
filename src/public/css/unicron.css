@@ -387,7 +387,7 @@ a:hover {
 }
 
 .card {
-    animation: fade 2.5s;
+    animation: fade 2s;
 }
 
 @keyframes fade {
@@ -397,4 +397,13 @@ a:hover {
     100% {
         opacity: 1;
     }
+}
+
+code {
+    color: var(--blue);
+}
+
+blockquote {
+    border-left: 5px solid var(--blue);
+    background-color: var(--gray);
 }

@@ -6,7 +6,7 @@ class Commands extends Route {
     }
     createRoute() {
         this.route.get('/', (req, res) => {
-            this.app.renderTemplate('ComingSoon.ejs', req, res);
+            this.app.renderTemplate('Commands.ejs', req, res);
         });
         return this.route;
     }

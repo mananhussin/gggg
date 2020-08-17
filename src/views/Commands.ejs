@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('Components/Header', { title: 'Unicron - Commands'}) %>
+
+<body class="theme-dark">
+    <%- include('Components/Navbar', { user })%>
+    <div class="card mx-auto d-block bind-theme bind-theme-accent mt-5" style="max-width: 80rem;">
+        <h1 class="card-title text-center text-light">Commands</h1>
+        <div class="card-body text-white bind-theme bind-theme-accent">
+            <br>
+            <p class="has-line-data" data-line-start="6" data-line-end="9">
+                <strong>Name</strong>: The name of the command<br>
+                <strong>Description</strong>: A brief explanation of the purpose of the command<br>
+                <strong>Usage</strong>: The arguments/options that the command takes in parameters
+            <ul>
+                <li class="has-line-data" data-line-start="10" data-line-end="11"><code>&lt;&gt;</code> - Required</li>
+                <li class="has-line-data" data-line-start="11" data-line-end="12"><code>[]</code> - Optional</li>
+                <li class="has-line-data" data-line-start="12" data-line-end="13"><code>()</code> - Miscellaneous
+                    informations</li>
+                <li class="has-line-data" data-line-start="13" data-line-end="15"><code>...</code> - One or more
+                    arguments</li>
+            </ul>
+            </p>
+            <blockquote>
+                <p class="has-line-data" data-line-start="15" data-line-end="16">You can also do
+                    <code>help &lt;Command&gt;</code> to get
+                    more information about a specific command !</p>
+            </blockquote>
+            <blockquote>
+                <p class="has-line-data" data-line-start="17" data-line-end="18">Please note that some of the
+                    informations below may
+                    or may not be accurate as the bot continues to grow</p>
+            </blockquote>
+            <h1 class="card-title text-center text-light">Moderation</h1>
+            <p class="has-line-data text-center" data-line-start="21" data-line-end="22"><strong>Moderation</strong>
+                commands to
+                strict your
+                server from rule breakers!</p>
+            <table class="table-striped bind-theme">
+                <thead>
+                    <tr>
+                        <th style="text-align:left">Name</th>
+                        <th style="text-align:left">Description</th>
+                        <th style="text-align:left">Usage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="text-align:left"><strong>ban</strong></td>
+                        <td style="text-align:left">Bans a member from the server</td>
+                        <td style="text-align:left"><code>ban &lt;User&gt; [Duration] [...Reason]</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>kick</strong></td>
+                        <td style="text-align:left">Kicks a member from the server</td>
+                        <td style="text-align:left"><code>kick &lt;User&gt; [...Reason]</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>softban</strong></td>
+                        <td style="text-align:left">Bans a member then immediately unban</td>
+                        <td style="text-align:left"><code>softban &lt;User&gt; [...Reason]</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>pardon</strong></td>
+                        <td style="text-align:left">Pardon/unbans someone from the server</td>
+                        <td style="text-align:left"><code>pardon &lt;UserID&gt; [...Reason]</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>mute</strong></td>
+                        <td style="text-align:left">Mutes someone from the server</td>
+                        <td style="text-align:left"><code>mute &lt;User&gt; [Duration] [...Reason]</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>unmute</strong></td>
+                        <td style="text-align:left">Unmutes someone from the server</td>
+                        <td style="text-align:left"><code>unmute &lt;User&gt; [...Reason]</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>warn</strong></td>
+                        <td style="text-align:left">Warns someone from the server</td>
+                        <td style="text-align:left"><code>warn &lt;User&gt; [Duration] [...Reason]</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>warnings</strong></td>
+                        <td style="text-align:left">View warnings of the specified user</td>
+                        <td style="text-align:left"><code>warnings [User]</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>clearwarns</strong></td>
+                        <td style="text-align:left">Clears the warnings of the specified user</td>
+                        <td style="text-align:left"><code>clearwarns &lt;User&gt;</code></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h1 class="card-title text-center text-light">Settings</h1>
+            <p class="has-line-data text-center" data-line-start="37" data-line-end="38">Fully
+                <strong>Customizable</strong>
+                Configurations.
+                Configure Unicron's functionality for your
+                server.
+            </p>
+            <blockquote>
+                <p class="has-line-data" data-line-start="39" data-line-end="40">All commands on this category requires
+                    permission
+                    level <code>Server Administrator</code></p>
+            </blockquote>
+            <table class="table-striped bind-theme">
+                <thead>
+                    <tr>
+                        <th style="text-align:left">Name</th>
+                        <th style="text-align:left">Description</th>
+                        <th style="text-align:left">Usage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="text-align:left"><strong>automod</strong></td>
+                        <td style="text-align:left">Toggles Auto-Moderation on your server</td>
+                        <td style="text-align:left"><code>automod</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>config</strong></td>
+                        <td style="text-align:left">Configure Unicron’s settings for the current server</td>
+                        <td style="text-align:left"><code>config &lt;Action&gt; &lt;Key&gt; &lt;Value&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>noswear</strong></td>
+                        <td style="text-align:left">Toggles No Swear on your server</td>
+                        <td style="text-align:left"><code>noswear</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>verification</strong></td>
+                        <td style="text-align:left">Enable/Disable/Configure Member Verification Feature</td>
+                        <td style="text-align:left"><code>verification [enable|disable]</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>invitefilter</strong></td>
+                        <td style="text-align:left">Toggles Discord Invite Filter to block discord invite links!</td>
+                        <td style="text-align:left"><code>invitefilter</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>welcomer</strong></td>
+                        <td style="text-align:left">Setup Welcomer/Greeter on your server</td>
+                        <td style="text-align:left">Just do <code>help welcomer</code> :P</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>farewell</strong></td>
+                        <td style="text-align:left">Setup Farewell to your server</td>
+                        <td style="text-align:left">Just do <code>help farewell</code> :P</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h1 class="card-title text-center text-light">Dynamic Text/Voice</h1>
+            <p class="has-line-data text-center" data-line-start="53" data-line-end="54">This allows users to create
+                their own
+                text/voice
+                Channels to enhance your community environment as your users continue to meet new people.</p>
+            <blockquote>
+                <p class="has-line-data" data-line-start="55" data-line-end="56">You can also have a role named
+                    <code>Dynamic Mod</code> so whoevers has that role has full access to all dynamic channels. like a
+                    Moderator ;)
+                </p>
+            </blockquote>
+            <table class="table-striped bind-theme">
+                <thead>
+                    <tr>
+                        <th style="text-align:left">Name</th>
+                        <th style="text-align:left">Description</th>
+                        <th style="text-align:left">Usage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="text-align:left"><strong>dtcreate</strong></td>
+                        <td style="text-align:left">Creates a Dynamic Text Channel!</td>
+                        <td style="text-align:left"><code>dtcreate</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>dtinvite</strong></td>
+                        <td style="text-align:left">Invite some people to your Dynamic Text Channel!</td>
+                        <td style="text-align:left"><code>dtinvite &lt;...Users&gt;</code></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h1 class="card-title text-center text-light">Ticket System</h1>
+            <p class="has-line-data text-center" data-line-start="64" data-line-end="65">Our wonderful very simple
+                <strong>Ticket
+                    System</strong> bringing/helping support from your members as your community continue to grows</p>
+            <blockquote>
+                <p class="has-line-data" data-line-start="66" data-line-end="67">You can also have a role named
+                    <code>Support Team</code> so whoevers has that role can access any ticket.</p>
+            </blockquote>
+            <table class="table-striped bind-theme">
+                <thead>
+                    <tr>
+                        <th style="text-align:left">Name</th>
+                        <th style="text-align:left">Description</th>
+                        <th style="text-align:left">Usage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="text-align:left"><strong>new</strong></td>
+                        <td style="text-align:left">Creates a new ticket</td>
+                        <td style="text-align:left"><code>new &lt;...Topic&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>close</strong></td>
+                        <td style="text-align:left">Closes a ticket</td>
+                        <td style="text-align:left"><code>close [...Reason]</code></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h1 class="card-title text-center text-light">Search</h1>
+            <p class="has-line-data text-center" data-line-start="75" data-line-end="76">Searching commands, what more
+                could you
+                want?</p>
+            <table class="table-striped bind-theme">
+                <thead>
+                    <tr>
+                        <th style="text-align:left">Name</th>
+                        <th style="text-align:left">Description</th>
+                        <th style="text-align:left">Usage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="text-align:left"><strong>github</strong></td>
+                        <td style="text-align:left">Searches the given repository name</td>
+                        <td style="text-align:left"><code>github &lt;Username&gt;/&lt;Repository&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>mdn</strong></td>
+                        <td style="text-align:left">Searches the given query on MDN (Javascript Docs)</td>
+                        <td style="text-align:left"><code>mdn &lt;Query&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>npm</strong></td>
+                        <td style="text-align:left">Searches the specified package on NPM (Node Package Manager)</td>
+                        <td style="text-align:left"><code>npm &lt;Query&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>screenshot</strong></td>
+                        <td style="text-align:left">Takes a screenshot of the specified website!</td>
+                        <td style="text-align:left"><code>screenshot &lt;Site URL&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>stackoverflow</strong></td>
+                        <td style="text-align:left">The google of programmers</td>
+                        <td style="text-align:left"><code>stackoverflow &lt;Query&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>steam</strong></td>
+                        <td style="text-align:left">Searches a game on steam and showing it’s cool information about it
+                        </td>
+                        <td style="text-align:left"><code>steam &lt;Game&gt;</code></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h1 class="card-title text-center text-light">Economy</h1>
+            <p class="has-line-data text-center" data-line-start="88" data-line-end="89">idk what to put here ngl, just
+                so you know
+                <strong>Unicron’s Economy</strong> is good for keeping your server active and it’s cool xd</p>
+            <table class="table-striped bind-theme">
+                <thead>
+                    <tr>
+                        <th style="text-align:left">Name</th>
+                        <th style="text-align:left">Description</th>
+                        <th style="text-align:left">Usage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="text-align:left"><strong>balance</strong></td>
+                        <td style="text-align:left">Shows the balance of a user</td>
+                        <td style="text-align:left"><code>balance [User]</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>beg</strong></td>
+                        <td style="text-align:left">Use this to beg some coins!</td>
+                        <td style="text-align:left"><code>beg</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>buy</strong></td>
+                        <td style="text-align:left">Buy some items from the shop!</td>
+                        <td style="text-align:left"><code>buy &lt;ItemID&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>shop</strong></td>
+                        <td style="text-align:left">View all purchasable items from the amazing poop shop</td>
+                        <td style="text-align:left"><code>shop</code><br><code>shop view &lt;ItemID&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>sell</strong></td>
+                        <td style="text-align:left">Sell some items from your inventory and get some coins!</td>
+                        <td style="text-align:left"><code>sell &lt;ItemID&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>use</strong></td>
+                        <td style="text-align:left">Use an item from your inventory</td>
+                        <td style="text-align:left"><code>use &lt;ItemID&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>inventory</strong></td>
+                        <td style="text-align:left">Shows your inventory full of goodies</td>
+                        <td style="text-align:left"><code>inv [User]</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>crime</strong></td>
+                        <td style="text-align:left">Go commit some crimes and get the coins!</td>
+                        <td style="text-align:left"><code>crime</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>work</strong></td>
+                        <td style="text-align:left">Go make a living to earn that precious salary!</td>
+                        <td style="text-align:left"><code>work &lt;Job&gt;</code><br> Jobs: <code>mailman</code>,
+                            <code>developer</code>, <code>carpenter</code>, <code>mechanic</code>, <code>police</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>hourly</strong></td>
+                        <td style="text-align:left">Receive some coins every hour!</td>
+                        <td style="text-align:left"><code>hourly</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>payday</strong></td>
+                        <td style="text-align:left">Receive some more coins every day!</td>
+                        <td style="text-align:left"><code>payday</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>leaderboard</strong></td>
+                        <td style="text-align:left">Shows the richest members for the current server</td>
+                        <td style="text-align:left"><code>leaderboard</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>steal</strong></td>
+                        <td style="text-align:left">Steal some coins from another user!</td>
+                        <td style="text-align:left"><code>rob [User]</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>share</strong></td>
+                        <td style="text-align:left">Share someone some coins from you &lt;3</td>
+                        <td style="text-align:left"><code>share &lt;Amount&gt; &lt;User&gt;</code><br>
+                            <code>share &lt;User&gt; &lt;Amount&gt;</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>profile</strong></td>
+                        <td style="text-align:left">Shows your current awesome economy stats!</td>
+                        <td style="text-align:left"><code>profile [User]</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>marriage</strong></td>
+                        <td style="text-align:left">Shows who you are married to</td>
+                        <td style="text-align:left"><code>marriage [User]</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>marry</strong></td>
+                        <td style="text-align:left">Marry someone on discord xd</td>
+                        <td style="text-align:left"><code>marry &lt;User&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>divorce</strong></td>
+                        <td style="text-align:left">File a divorce to whom you are married to ;p</td>
+                        <td style="text-align:left"><code>divorce</code></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h1 class="card-title text-center text-light">Utility</h1>
+            <p class="has-line-data text-center" data-line-start="113" data-line-end="114">Some very useful utility
+                commands ;)</p>
+            <table class="table-striped bind-theme">
+                <thead>
+                    <tr>
+                        <th style="text-align:left">Name</th>
+                        <th style="text-align:left">Description</th>
+                        <th style="text-align:left">Usage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="text-align:left"><strong>calc</strong></td>
+                        <td style="text-align:left">Calculates the given Math Expression</td>
+                        <td style="text-align:left"><code>calc &lt;Expression&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>embed</strong></td>
+                        <td style="text-align:left">Make awesome fancy embeds using this command!</td>
+                        <td style="text-align:left"><code>embed &lt;...Text&gt;</code><br>
+                            <code>embed -json &lt;Raw JSON&gt;</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>help</strong></td>
+                        <td style="text-align:left">List all commands, you know how this works :P</td>
+                        <td style="text-align:left"><code>help &lt;Category|Command&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>length</strong></td>
+                        <td style="text-align:left">Shows the length of the given text</td>
+                        <td style="text-align:left"><code>length &lt;...Text&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>permissions</strong></td>
+                        <td style="text-align:left">Shows you your permission level for the current guild location</td>
+                        <td style="text-align:left"><code>permissions</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>ping</strong></td>
+                        <td style="text-align:left">Shows the Bot’s ping throughout discord</td>
+                        <td style="text-align:left"><code>ping</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>prefix</strong></td>
+                        <td style="text-align:left">Shows the Bot’s prefix for the current server/guild</td>
+                        <td style="text-align:left"><code>prefix</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>shard</strong></td>
+                        <td style="text-align:left">Shows what shard is the current server located on the Bot’s system
+                        </td>
+                        <td style="text-align:left"><code>shard [ServerID]</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>support</strong></td>
+                        <td style="text-align:left">Shows the bot’s invite link, support server and donation link for
+                            the bot</td>
+                        <td style="text-align:left"><code>support</code></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h1 class="card-title text-center text-light">Miscellaneous</h1>
+            <table class="table-striped bind-theme">
+                <thead>
+                    <tr>
+                        <th style="text-align:left">Name</th>
+                        <th style="text-align:left">Description</th>
+                        <th style="text-align:left">Usage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="text-align:left"><strong>avatar</strong></td>
+                        <td style="text-align:left">Shows your or the specified user’s avatar</td>
+                        <td style="text-align:left"><code>avatar [User]</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>botinfo</strong></td>
+                        <td style="text-align:left">Shows the bot’s statistics and condition</td>
+                        <td style="text-align:left"><code>botinfo</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>crypto</strong></td>
+                        <td style="text-align:left">Get latest crypto exchange price in USD, or in other cryptos</td>
+                        <td style="text-align:left"><code>crypto &lt;...Symbol&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>md5</strong></td>
+                        <td style="text-align:left">Encrypts the given text into MD5 Hash</td>
+                        <td style="text-align:left"><code>md5 &lt;...Text&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>morse</strong></td>
+                        <td style="text-align:left">Encodes the given text into morse encoding</td>
+                        <td style="text-align:left"><code>morse &lt;...Text&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>poll</strong></td>
+                        <td style="text-align:left">Make polls using this command!</td>
+                        <td style="text-align:left"><code>poll &lt;...Question&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>reverse</strong></td>
+                        <td style="text-align:left">Reverses the given text</td>
+                        <td style="text-align:left"><code>reverse &lt;...Text&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>rot13</strong></td>
+                        <td style="text-align:left">Ciphers the given text into ROT13 Eg. A=R, B=S</td>
+                        <td style="text-align:left"><code>rot13 &lt;...Text&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>serverinfo</strong></td>
+                        <td style="text-align:left">Shows the information of the current server</td>
+                        <td style="text-align:left"><code>serverinfo</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>sha1</strong></td>
+                        <td style="text-align:left">Encrypts the given text using the SHA1 Algorithm</td>
+                        <td style="text-align:left"><code>sha1 &lt;...Text&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>sha256</strong></td>
+                        <td style="text-align:left">Encrypts the given text using the SHA256 Algorithm</td>
+                        <td style="text-align:left"><code>sha256 &lt;...Text&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>sha512</strong></td>
+                        <td style="text-align:left">Encrypts the given text using the SHA512 Algorithm</td>
+                        <td style="text-align:left"><code>sha512 &lt;...Text&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>terms</strong></td>
+                        <td style="text-align:left">Shows Unicron’s Terms of Service</td>
+                        <td style="text-align:left"><code>terms</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>urban</strong></td>
+                        <td style="text-align:left">Searches the definition of the given word/text on the urban
+                            dictionary</td>
+                        <td style="text-align:left"><code>urban &lt;Query&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>userinfo</strong></td>
+                        <td style="text-align:left">Shows you or the specified user’s information on discord</td>
+                        <td style="text-align:left"><code>userinfo [User]</code></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h1 class="card-title text-center text-light">Fun</h1>
+            <table class="table-striped bind-theme">
+                <thead>
+                    <tr>
+                        <th style="text-align:left">Name</th>
+                        <th style="text-align:left">Description</th>
+                        <th style="text-align:left">Usage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="text-align:left"><strong>8ball</strong></td>
+                        <td style="text-align:left">The 8ball command :P</td>
+                        <td style="text-align:left"><code>8ball &lt;...Question&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>advice</strong></td>
+                        <td style="text-align:left">Get a random life advice!</td>
+                        <td style="text-align:left"><code>advice</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>badquotes</strong></td>
+                        <td style="text-align:left">Gives you a random bad quote lol</td>
+                        <td style="text-align:left"><code>badquotes</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>cat</strong></td>
+                        <td style="text-align:left">Shows a random iamges of a cat</td>
+                        <td style="text-align:left"><code>cat</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>chucknorris</strong></td>
+                        <td style="text-align:left">Sends a radom Chuck Norris quote</td>
+                        <td style="text-align:left"><code>chucknorris</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>cointoss</strong></td>
+                        <td style="text-align:left">Flips a coin</td>
+                        <td style="text-align:left"><code>cointoss</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>dadjoke</strong></td>
+                        <td style="text-align:left">Sends a random dad joke lmao</td>
+                        <td style="text-align:left"><code>dadjoke</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>dog</strong></td>
+                        <td style="text-align:left">Shows a random images of a dog xd</td>
+                        <td style="text-align:left"><code>dog</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>duck</strong></td>
+                        <td style="text-align:left">Shows a random images of a duck duck</td>
+                        <td style="text-align:left"><code>duck</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>emoji</strong></td>
+                        <td style="text-align:left">Sends a random unicode emoji :P</td>
+                        <td style="text-align:left"><code>emoji</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>fidgetspinner</strong></td>
+                        <td style="text-align:left">Spins a fidget spinner for you and shows for how long it was
+                            spinning.</td>
+                        <td style="text-align:left"><code>fidgetspinner</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>foaas</strong></td>
+                        <td style="text-align:left">Sends a Random F*ck Off As A Service! No wonder it’s NSFW</td>
+                        <td style="text-align:left"><code>foaas</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>fortune</strong></td>
+                        <td style="text-align:left">Sends you a random fortune for your life xd</td>
+                        <td style="text-align:left"><code>fortune</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>fox</strong></td>
+                        <td style="text-align:left">Shows a random images of a fox ;o</td>
+                        <td style="text-align:left"><code>fox</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>gayrate</strong></td>
+                        <td style="text-align:left">Shows you or the specified user rate of being GAY , LOL</td>
+                        <td style="text-align:left"><code>gayrate</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>insult</strong></td>
+                        <td style="text-align:left">Sends a random insulting things xd</td>
+                        <td style="text-align:left"><code>insult</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>joke</strong></td>
+                        <td style="text-align:left">SENDS A RANDOM JOKE OMG</td>
+                        <td style="text-align:left"><code>joke</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>kanyewest</strong></td>
+                        <td style="text-align:left">Sends a random Kanye West Quote</td>
+                        <td style="text-align:left"><code>kanyewest</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>lenny</strong></td>
+                        <td style="text-align:left">Responds with <code>( ͡° ͜ʖ ͡°)</code></td>
+                        <td style="text-align:left"><code>lenny</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>meme</strong></td>
+                        <td style="text-align:left">Sends a random meme from reddit dx</td>
+                        <td style="text-align:left"><code>meme</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>nitro</strong></td>
+                        <td style="text-align:left">Sends a fake nitro gift LOL</td>
+                        <td style="text-align:left"><code>nitro</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>penis</strong></td>
+                        <td style="text-align:left">Shows you or the specified user’s penis length , oh lol</td>
+                        <td style="text-align:left"><code>penis</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>programming</strong></td>
+                        <td style="text-align:left">Sends a random quote about programming</td>
+                        <td style="text-align:left"><code>programming</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>quote</strong></td>
+                        <td style="text-align:left">Sends a random inspirational quote!</td>
+                        <td style="text-align:left"><code>quote</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>slap</strong></td>
+                        <td style="text-align:left">Slap someone using this command to do so xd</td>
+                        <td style="text-align:left"><code>slap &lt;User&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>spam</strong></td>
+                        <td style="text-align:left">Shows an image of the SPAM Brand (Not sponsored xd)</td>
+                        <td style="text-align:left"><code>spam</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>tableflip</strong></td>
+                        <td style="text-align:left">Flips up a table (with a cool animation)</td>
+                        <td style="text-align:left"><code>tableflip</code></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left"><strong>trump</strong></td>
+                        <td style="text-align:left">Sends a random stupid thing that Donald Trump said</td>
+                        <td style="text-align:left"><code>trump</code></td>
+                    </tr>
+                </tbody>
+            </table>
+            </p>
+        </div>
+    </div>
+    <br><br><br><br>
+    <%- include('Components/Footer') %>
+</body>
+
+</html>
