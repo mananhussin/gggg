@@ -60,7 +60,7 @@ class OAuth extends Route {
                 res.redirect('/');
             });
         });
-        this.route.get('/redirect', passport.authenticate('discord', { failureRedirect: '/oauth/login' }), (req, res) => {
+        this.route.get('/redirect', passport.authenticate('discord'), (req, res) => {
             this.app.logger.info(`(${req.user.tag}/${req.user.id}) has been authenticated!`, 'Client');
             res.redirect('/dashboard');
         });

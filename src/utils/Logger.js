@@ -20,7 +20,7 @@ module.exports = {
      * @param {"Server"|"Client"} thread 
      */
     error: function (contents, thread = 'Server') {
-        console.log(`${timestamp(thread, chalk.black.bgRed('ERROR'))} : `);
+        console.log(`${timestamp(thread, chalk.black.bgRed('ERROR'))} : ${contents}`);
         console.log(contents);
     },
     /**
@@ -29,7 +29,7 @@ module.exports = {
      * @param {"Server"|"Client"} thread 
      */
     warn: function (contents, thread = 'Server') {
-        console.log(`${timestamp(thread, chalk.black.bgYellow('WARNING'))} : `);
+        console.log(`${timestamp(thread, chalk.black.bgYellow('WARNING'))} : ${contents}`);
         console.log(contents);
     },
     /**

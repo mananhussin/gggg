@@ -62,6 +62,23 @@ const User = db.define('user', {
         allowNull: false,
         defaultValue: [],
     }
+}, {
+    timestamps: false,
+});
+
+const AuthToken = db.define('tokens', {
+    username: {
+        type: DataTypes.STRING,
+        primaryKey: true,
+        unique: true,
+    },
+    password: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        defaultValue: '',
+    },
+}, {
+    timestamps: false,
 });
 
 if (process.argv.includes('--dbInit')) {
@@ -84,6 +101,7 @@ class LocalDB {
     constructor(app) {
         this.app = app;
         this.User = User;
+        this.AuthToken = AuthToken;
         this.db = db;
     }
 }

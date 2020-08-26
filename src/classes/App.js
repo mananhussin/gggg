@@ -12,6 +12,7 @@ const Database = require('../api/Database');
 const BaseRoute = require('./Route');
 const BaseEvent = require('./WebEvent');
 const WebSocketEvent = require('./WebSocketEvent');
+const Terminal = require('../terminal');
 
 const UserManager = require('../managers/UserManager');
 const GuildManager = require('../managers/GuildManager');
@@ -48,6 +49,7 @@ class App extends EventEmitter {
         }
         this.aes = new AES(process.env.AES_KEY);
         this.localdb = new LocalDB(this);
+        this.terminal = new Terminal(this);
     }
     /**
      * 
@@ -77,6 +79,7 @@ class App extends EventEmitter {
         await this.registerRoutes();
         await this.registerWebEvents();
         await this.registerWebSocketEvents();
+        this.terminal.initiate();
     }
     /**
      * @private

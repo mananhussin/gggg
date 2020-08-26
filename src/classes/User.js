@@ -36,17 +36,33 @@ class User {
          * @type {{badges: Array<string>, premium: boolean}}
          */
         this.data = raw.data;
-        this.level = 0;
+    }
+    get level() {
+        let lvl = 0;
+        const cur = this.experience;
         for (let i = 0; i < 101; i++) {
-            this.lvl = i;
-            if (this.experience >= Leveling.LevelChart[i] && this.experience <= Leveling.LevelChart[i + 1]) break;
+            lvl = i;
+            if (cur >= Leveling.LevelChart[i] && cur <= Leveling.LevelChart[i + 1]) break;
         }
-        this.levelxp = Leveling.LevelChart[this.level];
-        this.nextlevel = this.level + 1;
-        this.nextlevelxp = Leveling.LevelChart[this.nextlevel];
-        this.progress = ((this.experience - this.levelxp / (this.nextlevelxp- this.levelxp))) * 100;
-        this.progressbar = Leveling.ProgressBar(this.progress);
-        this.progressXP = this.nextlevelxp - this.experience;
+        return lvl;
+    }
+    get levelxp() {
+        return Leveling.LevelChart[this.level];
+    }
+    get nextlevel() {
+        return this.level + 1;
+    }
+    get nextlevelxp() {
+        return Leveling.LevelChart[this.nextlevel];
+    }
+    get progress() {
+        return ((this.experience - this.levelxp) / (this.nextlevelxp - this.levelxp)) * 100; // (xp - lxp / nxp - lxp) * 100 = n
+    }
+    get progressbar() {
+        return Leveling.ProgressBar(this.progress);
+    }
+    get progressXP() {
+        return this.nextlevelxp - this.experience;
     }
     /**
      * 
@@ -63,7 +79,7 @@ class User {
      */
     removeItem(item) {
         const cur = this.inventory.find((t) => t.item_id === item);
-        if (cur && cur.amount >= 1) return cur.amount--;
+        if (cur && cur.amount > 1) return cur.amount--;
         this.inventory = this.inventory.filter((t) => t.item_id !== item);
     }
     /**
@@ -78,6 +94,8 @@ class User {
      * @param {string} item 
      */
     addBadge(badge) {
+        if (!this.data) this.data = {};
+        if (!this.data.badges) this.data.badges = [];
         if (!this.data.badges.includes(badge)) this.data.badges.push(badge);
     }
     /**
@@ -85,6 +103,8 @@ class User {
      * @param {string} item 
      */
     removeBadge(badge) {
+        if (!this.data) this.data = {};
+        if (!this.data.badges) this.data.badges = [];
         if (this.data.badges.includes(badge)) this.data.badges = this.data.badges.filter((b) => b !== badge);
     }
     /**
@@ -92,6 +112,8 @@ class User {
      * @param {string} item 
      */
     hasBadge(badge) {
+        if (!this.data) this.data = {};
+        if (!this.data.badges) this.data.badges = [];
         return this.data.badges.includes(badge);
     }
     /**

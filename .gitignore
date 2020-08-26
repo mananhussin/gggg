@@ -4,3 +4,4 @@
 .stash
 *.cert
 *.key
+*.sqlite

@@ -8,8 +8,7 @@ class Profile extends Route {
         this.route.use(this.app.isAuthenticated);
         this.route.get('/', async (req, res) => {
             try {
-                let data = await this.app.db.users.fetch(req.user.id).catch((e) => { throw e; });
-                if (!data) data = await this.app.db.users.fetch(req.user.id).catch((e) => { throw e; });
+                const data = await this.app.db.users.fetch(req.user.id).catch((e) => { throw e; });
                 this.app.renderTemplate('Profile.ejs', req, res, { data });
             } catch (err) {
                 console.error(err);
