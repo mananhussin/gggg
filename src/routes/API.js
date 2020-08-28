@@ -1,8 +1,8 @@
 const Route = require('../classes/Route');
 
-class Vote extends Route {
+class API extends Route {
     constructor(app) {
-        super(app, '/api/vote');
+        super(app, '/api/');
         this.parse = {
             topgg: function (body) {
                 return {
@@ -30,7 +30,7 @@ class Vote extends Route {
                 res.status(500).send(e);
             }
         });
-        this.route.post('/', (req, res) => {
+        this.route.post('/vote', async (req, res) => {
             try {
                 const [username,] = req.headers.authorization.split(' ');
                 if (!this.parse.hasOwnProperty(username)) return res.status(400).send({ status: 400, message: 'idk' });
@@ -50,4 +50,4 @@ class Vote extends Route {
     }
 }
 
-module.exports = Vote;
+module.exports = API;
